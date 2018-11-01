@@ -1,22 +1,15 @@
 const express = require('express');
 const app = express();
-const { port, dbConfig } = require('./config/environment');
+const port = process.env.PORT || 4000;
 const Router = require('./config/routes');
-// Database
-const mysql = require('mysql');
 
-const con = mysql.createConnection(dbConfig);
+// app.use((req, res, next) => {
+//   res.append('Access-Control-Allow-Origin', ['*']);
+//   res.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.append('Access-Control-Allow-Header', 'Content-Type');
+//   next();
+// });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log('Now connected to birdietest database');
-  // con.query('SELECT * FROM census_learn_sql', function (err, result) {
-  //   if (err) throw err;
-  //   console.log(result);
-  // });
-});
-
-// connection.end();
 
 app.use('/api', Router);
 
