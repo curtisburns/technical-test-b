@@ -559,7 +559,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nclass NewComponent extends React.Component {\n    constructor() {\n        super(...arguments);\n        this.state = {};\n    }\n    componentDidMount() {\n        console.log('im firing');\n        axios_1.default.get('api/data')\n            .then(res => console.log(res.data));\n    }\n    render() {\n        return (React.createElement(\"h1\", null, \"Hello auto updated world\"));\n    }\n}\nexports.default = NewComponent;\n\n\n//# sourceURL=webpack:///./src/components/newComponent.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nclass NewComponent extends React.Component {\n    constructor() {\n        super(...arguments);\n        this.state = {\n            data: []\n        };\n    }\n    componentDidMount() {\n        axios_1.default.get('api/data')\n            .then(res => {\n            this.setState({ data: res.data });\n            console.log(this.state);\n        });\n    }\n    render() {\n        return (React.createElement(\"h1\", null, \"Hello auto updated world\"));\n    }\n}\nexports.default = NewComponent;\n\n\n//# sourceURL=webpack:///./src/components/newComponent.tsx?");
 
 /***/ }),
 

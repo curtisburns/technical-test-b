@@ -2,13 +2,18 @@ import * as React from 'react';
 import axios from 'axios';
 
 export default class NewComponent extends React.Component<{}> {
+    state = {
+        data: []
+    };
+
     componentDidMount() {
-        console.log('im firing');
-        
         axios.get('api/data')
-            .then(res => console.log(res.data));
+            .then(res => {
+                this.setState({data:res.data});
+                console.log(this.state);
+            })
     }
-    state = {};
+   
 
     render() {
         return (
