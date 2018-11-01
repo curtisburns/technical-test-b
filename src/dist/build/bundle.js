@@ -547,19 +547,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nconst newComponent_1 = __webpack_require__(/*! ./components/newComponent */ \"./src/components/newComponent.tsx\");\nclass App extends React.Component {\n    render() {\n        return (React.createElement(newComponent_1.default, null));\n    }\n}\nReactDOM.render(React.createElement(App, null), document.getElementById(\"root\"));\n\n\n//# sourceURL=webpack:///./src/app.tsx?");
-
-/***/ }),
-
-/***/ "./src/components/newComponent.tsx":
-/*!*****************************************!*\
-  !*** ./src/components/newComponent.tsx ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nclass NewComponent extends React.Component {\n    constructor() {\n        super(...arguments);\n        this.state = {\n            data: []\n        };\n    }\n    componentDidMount() {\n        axios_1.default.get('api/data')\n            .then(res => {\n            this.setState({ data: res.data });\n            console.log(this.state);\n        });\n    }\n    render() {\n        return (React.createElement(\"h1\", null, \"Hello auto updated world\"));\n    }\n}\nexports.default = NewComponent;\n\n\n//# sourceURL=webpack:///./src/components/newComponent.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n// import Table from './components/table/Table';\nclass App extends React.Component {\n    constructor() {\n        super(...arguments);\n        this.state = {\n            data: [],\n            tableHeaders: []\n        };\n    }\n    componentDidMount() {\n        axios_1.default.get('api/data')\n            .then(res => {\n            const variableNames = [];\n            for (let key in res.data[0]) {\n                if (key !== 'age') {\n                    variableNames.push(key);\n                }\n            }\n            this.setState({\n                data: res.data,\n                tableHeaders: variableNames\n            });\n            console.log(this.state);\n        });\n    }\n    render() {\n        return (\n        // <Table data={this.state.data}></Table>\n        null);\n    }\n}\nReactDOM.render(React.createElement(App, null), document.getElementById(\"root\"));\n\n\n//# sourceURL=webpack:///./src/app.tsx?");
 
 /***/ }),
 
