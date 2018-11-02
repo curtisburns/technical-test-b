@@ -1,13 +1,5 @@
 import axios from 'axios'
 
-interface ServerResponse {
-    data: ServerData
-  }
-
-interface ServerData {
-   data?: string[]
- }
-
 const fetchData = store => next => action => {
   /*
   Pass all actions through by default
@@ -22,10 +14,10 @@ const fetchData = store => next => action => {
       axios.get('/api/data')
         .then((res:any) => {
             const data = res.data
-            console.log('im firing');
+            console.log('fetchData middleware - data', data[0]);
             /*
             Once data is received, dispatch an action telling the application
-            that data was received successfully, along with the parsed data
+            that data was received successfully, along with the data
             */
             next({
               type: 'RETRIEVED_DATA',
@@ -36,6 +28,8 @@ const fetchData = store => next => action => {
           /*
           in case there is any error, dispatch an action containing the error
           */
+         console.log('fetchData middleware - err', err);
+         
           return next({
             type: 'CANNOT_RETRIEVE_DATA',
             err

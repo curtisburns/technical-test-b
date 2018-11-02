@@ -5,8 +5,8 @@ class Dropdown extends React.Component<any, any> {
     render() {
         return (
             <select>
-                {this.props.variables.map(variable =>
-                     <option value="{variable}">{variable}</option>
+                {this.props.variables.map((variable, index) =>
+                     <option key={index} value={variable}>{variable}</option>
                 )}
             </select>
         )
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state: any):any => {
     return {
-        variables: state.variable
+        variables: state.storedData.variableNames
     }
 }
 

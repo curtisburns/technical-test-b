@@ -916,7 +916,7 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nconst store_1 = __webpack_require__(/*! ./store/store */ \"./src/store/store.ts\");\n// import axios from 'axios';\nconst Table_1 = __webpack_require__(/*! ./components/table/Table */ \"./src/components/table/Table.tsx\");\nclass App extends React.Component {\n    // componentDidMount() {\n    //     axios.get('api/data')\n    //         .then(res => {            \n    //             const variableNames = [];\n    //             for (let key in res.data[0]) {\n    //                 if (key !== 'age') {\n    //                       variableNames.push(key);\n    //                 }\n    //             }\n    //             this.setState({\n    //                 data: res.data,\n    //                 variableNames\n    //             });\n    //             console.log(this.state);\n    //         });       \n    // }\n    render() {\n        return (React.createElement(\"main\", null,\n            React.createElement(Table_1.default, null)));\n    }\n}\nReactDOM.render(React.createElement(react_redux_1.Provider, { store: store_1.default },\n    React.createElement(App, null)), document.getElementById(\"root\"));\nstore_1.default.dispatch({ type: 'GET_DEMOGRAPHIC_DATA' });\n\n\n//# sourceURL=webpack:///./src/app.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nconst store_1 = __webpack_require__(/*! ./store/store */ \"./src/store/store.ts\");\n// import axios from 'axios';\nconst Table_1 = __webpack_require__(/*! ./components/table/Table */ \"./src/components/table/Table.tsx\");\nclass App extends React.Component {\n    render() {\n        return (React.createElement(\"main\", null,\n            React.createElement(Table_1.default, null)));\n    }\n}\nReactDOM.render(React.createElement(react_redux_1.Provider, { store: store_1.default },\n    React.createElement(App, null)), document.getElementById(\"root\"));\nstore_1.default.dispatch({ type: 'GET_DEMOGRAPHIC_DATA' });\n\n\n//# sourceURL=webpack:///./src/app.tsx?");
 
 /***/ }),
 
@@ -928,7 +928,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nclass Dropdown extends React.Component {\n    render() {\n        return (React.createElement(\"select\", null, this.props.variables.map(variable => React.createElement(\"option\", { value: \"{variable}\" }, variable))));\n    }\n}\nconst mapDispatchToProps = (dispatch) => {\n    return {};\n};\nconst mapStateToProps = (state) => {\n    return {\n        variables: state.variable\n    };\n};\nexports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Dropdown);\n\n\n//# sourceURL=webpack:///./src/components/table/Dropdown.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nclass Dropdown extends React.Component {\n    render() {\n        return (React.createElement(\"select\", null, this.props.variables.map((variable, index) => React.createElement(\"option\", { key: index, value: variable }, variable))));\n    }\n}\nconst mapDispatchToProps = (dispatch) => {\n    return {};\n};\nconst mapStateToProps = (state) => {\n    return {\n        variables: state.storedData.variableNames\n    };\n};\nexports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Dropdown);\n\n\n//# sourceURL=webpack:///./src/components/table/Dropdown.tsx?");
 
 /***/ }),
 
@@ -940,7 +940,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst Dropdown_1 = __webpack_require__(/*! ./Dropdown */ \"./src/components/table/Dropdown.tsx\");\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nclass Table extends React.Component {\n    render() {\n        return (React.createElement(\"section\", null,\n            !this.props.data &&\n                React.createElement(\"div\", null,\n                    React.createElement(\"img\", { src: \"src/assets/logo/birdie_logo_grey.svg\", alt: \"Loading data\" }),\n                    React.createElement(\"h2\", null, \"Loading data\")),\n            this.props.data &&\n                React.createElement(Dropdown_1.default, null)\n        /* // <table>\n        //     <thead>\n        //         <tr>\n        //             <th>#</th>\n        //             <th>{this.props.variableNames[0]}</th>\n        //             <th>Count</th>\n        //             <th>Average age</th>\n        //         </tr>\n        //     </thead>\n        //     <tbody>\n        //         <tr>\n        //             <td>\n\n        //             </td>\n        //         </tr>\n        //     </tbody>\n\n        // </table> */\n        ));\n    }\n}\n// // This is used to map our action to props\n// const mapDispatchToProps = (dispatch) => {\n//     return {\n//         insertFunction: () => dispatch({type: 'SELECT_VARIABLE'})\n//     }\n// }\n//This can be put into the select variable dropdown menu.\n//Whenever the state changes, we need to be able to subscribe it. This is achieved doing the below.\n//Same as mapStoreToProps = (store) \nconst mapStateToProps = (state) => {\n    return {\n        results: state.results\n    };\n};\nexports.default = react_redux_1.connect(mapStateToProps)(Table);\n\n\n//# sourceURL=webpack:///./src/components/table/Table.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst Dropdown_1 = __webpack_require__(/*! ./Dropdown */ \"./src/components/table/Dropdown.tsx\");\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nclass Table extends React.Component {\n    render() {\n        return (React.createElement(\"section\", null,\n            !this.props.data &&\n                React.createElement(\"div\", null,\n                    React.createElement(\"img\", { src: \"src/assets/logo/birdie_logo_grey.svg\", alt: \"Loading data\" }),\n                    React.createElement(\"h2\", null, \"Loading data\")),\n            this.props.data &&\n                React.createElement(\"div\", null,\n                    React.createElement(\"p\", null, \"Data has loaded\"),\n                    React.createElement(Dropdown_1.default, null))));\n    }\n}\n//   This is used to map our action to props\n//  const mapDispatchToProps = (dispatch) => {\n//      return {\n//          insertFunction: () => dispatch({type: 'SELECT_VARIABLE'})\n//      }\n//  }\n// This can be put into the select variable dropdown menu.\n//Whenever the state changes, we need to be able to subscribe it. This is achieved doing the below.\n//Same as mapStoreToProps = (store) \nconst mapStateToProps = (state) => {\n    return {\n        data: state.storedData.data,\n        results: null //haven't yet decided how to tackle this.\n    };\n};\nexports.default = react_redux_1.connect(mapStateToProps)(Table);\n\n\n//# sourceURL=webpack:///./src/components/table/Table.tsx?");
 
 /***/ }),
 
@@ -952,19 +952,43 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nconst fetchData = store => next => action => {\n    /*\n    Pass all actions through by default\n    */\n    next(action);\n    switch (action.type) {\n        case 'GET_DEMOGRAPHIC_DATA':\n            /*\n          In case we receive an action to send an API request, send the appropriate request\n          */\n            axios_1.default.get('/api/data')\n                .then((res) => {\n                const data = res.data;\n                console.log('im firing');\n                /*\n                Once data is received, dispatch an action telling the application\n                that data was received successfully, along with the parsed data\n                */\n                next({\n                    type: 'RETRIEVED_DATA',\n                    data\n                });\n            })\n                .catch((err) => {\n                /*\n                in case there is any error, dispatch an action containing the error\n                */\n                return next({\n                    type: 'CANNOT_RETRIEVE_DATA',\n                    err\n                });\n            });\n            break;\n        /*\n      Do nothing if the action does not interest us\n      */\n        default:\n            break;\n    }\n};\nexports.default = fetchData;\n\n\n//# sourceURL=webpack:///./src/store/fetchData.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nconst fetchData = store => next => action => {\n    /*\n    Pass all actions through by default\n    */\n    next(action);\n    switch (action.type) {\n        case 'GET_DEMOGRAPHIC_DATA':\n            /*\n          In case we receive an action to send an API request, send the appropriate request\n          */\n            axios_1.default.get('/api/data')\n                .then((res) => {\n                const data = res.data;\n                console.log('fetchData middleware - data', data[0]);\n                /*\n                Once data is received, dispatch an action telling the application\n                that data was received successfully, along with the data\n                */\n                next({\n                    type: 'RETRIEVED_DATA',\n                    data\n                });\n            })\n                .catch((err) => {\n                /*\n                in case there is any error, dispatch an action containing the error\n                */\n                console.log('fetchData middleware - err', err);\n                return next({\n                    type: 'CANNOT_RETRIEVE_DATA',\n                    err\n                });\n            });\n            break;\n        /*\n      Do nothing if the action does not interest us\n      */\n        default:\n            break;\n    }\n};\nexports.default = fetchData;\n\n\n//# sourceURL=webpack:///./src/store/fetchData.ts?");
 
 /***/ }),
 
-/***/ "./src/store/reducer.ts":
-/*!******************************!*\
-  !*** ./src/store/reducer.ts ***!
-  \******************************/
+/***/ "./src/store/reducers/handleData.ts":
+/*!******************************************!*\
+  !*** ./src/store/reducers/handleData.ts ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst initialState = {\n    data: '',\n    variableNames: [],\n};\n// This takes an initialState and action\nconst reducer = (state = initialState, action) => {\n    const newState = Object.assign({}, state);\n    // switch(action.type) {\n    //     case: ''\n    // }\n    return newState;\n};\nexports.default = reducer;\n\n\n//# sourceURL=webpack:///./src/store/reducer.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst initialState = {};\nconst handleData = (state = initialState, action) => {\n    const newState = Object.assign({}, state);\n    switch (action.type) {\n        case '':\n            null;\n            break;\n        default: return newState;\n    }\n};\nexports.default = handleData;\n\n\n//# sourceURL=webpack:///./src/store/reducers/handleData.ts?");
+
+/***/ }),
+
+/***/ "./src/store/reducers/rootReducer.ts":
+/*!*******************************************!*\
+  !*** ./src/store/reducers/rootReducer.ts ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst redux_1 = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\nconst setData_1 = __webpack_require__(/*! ./setData */ \"./src/store/reducers/setData.ts\");\nconst handleData_1 = __webpack_require__(/*! ./handleData */ \"./src/store/reducers/handleData.ts\");\nconst rootReducer = redux_1.combineReducers({\n    storedData: setData_1.default,\n    manipulatedData: handleData_1.default\n});\nexports.default = rootReducer;\n\n\n//# sourceURL=webpack:///./src/store/reducers/rootReducer.ts?");
+
+/***/ }),
+
+/***/ "./src/store/reducers/setData.ts":
+/*!***************************************!*\
+  !*** ./src/store/reducers/setData.ts ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst initialState = {\n    data: '',\n    variableNames: [],\n};\n// This takes an initialState and action\nconst setData = (state = initialState, action) => {\n    const newState = Object.assign({}, state);\n    switch (action.type) {\n        case 'RETRIEVED_DATA':\n            const variableNames = [];\n            for (let key in action.data[0]) {\n                if (key !== 'age') {\n                    variableNames.push(key);\n                }\n            }\n            ;\n            return Object.assign({}, newState, { data: action.data, variableNames });\n        case 'CANNOT_RETRIEVE_DATA':\n            return Object.assign({}, newState, { error: action.err });\n        default:\n            return newState;\n    }\n};\nexports.default = setData;\n\n\n//# sourceURL=webpack:///./src/store/reducers/setData.ts?");
 
 /***/ }),
 
@@ -976,7 +1000,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst redux_1 = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\nconst reducer_1 = __webpack_require__(/*! ./reducer */ \"./src/store/reducer.ts\");\nconst fetchData_1 = __webpack_require__(/*! ./fetchData */ \"./src/store/fetchData.ts\");\nconst initialState = {};\nconst middleware = [fetchData_1.default]; // need to look into saga.\nconst store = redux_1.createStore(reducer_1.default, initialState, redux_1.applyMiddleware(...middleware));\nexports.default = store;\n\n\n//# sourceURL=webpack:///./src/store/store.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst redux_1 = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\nconst rootReducer_1 = __webpack_require__(/*! ./reducers/rootReducer */ \"./src/store/reducers/rootReducer.ts\");\nconst fetchData_1 = __webpack_require__(/*! ./fetchData */ \"./src/store/fetchData.ts\");\nconst initialState = {};\nconst middleware = [fetchData_1.default]; // need to look into saga.\nconst store = redux_1.createStore(rootReducer_1.default, initialState, redux_1.applyMiddleware(...middleware));\nexports.default = store;\n\n\n//# sourceURL=webpack:///./src/store/store.ts?");
 
 /***/ }),
 
