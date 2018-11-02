@@ -1,4 +1,11 @@
 var path = require("path");
+
+
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpack = new CopyWebpackPlugin([
+  { from: './src/assets', to: 'assets' }
+]);
+
 var config = {
   mode: 'development',
   entry: ["./src/app.tsx"],
@@ -39,7 +46,8 @@ var config = {
         secure: false
       }
     }
-  }
+  },
+  plugins: [CopyWebpack]
 };
 
 module.exports = config;

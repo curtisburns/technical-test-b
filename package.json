@@ -6,6 +6,7 @@
   "scripts": {
     "start:client": "webpack-dev-server --content-base ./src/dist",
     "build": "webpack",
+    "start:server": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,11 +22,16 @@
   "dependencies": {
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
+    "@types/react-redux": "^6.0.9",
+    "@types/redux": "^3.6.0",
     "axios": "^0.18.0",
+    "copy-webpack-plugin": "^4.6.0",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^5.3.0"
   },
