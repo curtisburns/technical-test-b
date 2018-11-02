@@ -30,6 +30,9 @@ var config = {
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: /node_modules/
+      },
+      { test: /\.scss$/, 
+        loader: ['style-loader', 'css-loader', 'sass-loader'] 
       }
     ]
   },

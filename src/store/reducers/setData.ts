@@ -17,7 +17,8 @@ const setData = (state = initialState, action) => {
             const variableNames = [];
                 for (let key in action.data[0]) {
                     if (key !== 'age') {
-                          variableNames.push(key);
+                        const variable: string = key.charAt(0).toUpperCase() + key.substr(1);
+                          variableNames.push(variable);
                     }
                 };
             return  {

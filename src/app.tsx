@@ -3,16 +3,14 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
-// import axios from 'axios';
+// Styling
+import './scss/style.scss';
 
+// Components
 import Table from './components/table/Table';
 
 
 class App extends React.Component<any> {
- 
-
- 
-
     render() {        
         return (   
                 <main>
