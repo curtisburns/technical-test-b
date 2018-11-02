@@ -8,7 +8,6 @@ const handleData = (state = initialState, action) => {
     const newState = {...state};
     switch(action.type) {
         case 'CHANGE_VARIABLE':
-            console.log(action.data);
             let variableObj = {}
             const variable = action.variable.toLowerCase();
 
@@ -23,7 +22,6 @@ const handleData = (state = initialState, action) => {
                     } else {
                         variableObj[row[variable]].count++;
                         variableObj[row[variable]].ages.push(row.age);
-                        console.log(variableObj[row[variable]].ages);
                     }
                 })
     

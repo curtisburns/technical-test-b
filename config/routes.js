@@ -9,7 +9,7 @@ Router.route('/')
 
 Router.route('/data')
   .get((req, res) => {
-    db.query('SELECT * FROM census_learn_sql limit 100', function (err, result) {
+    db.query('SELECT * FROM census_learn_sql', function (err, result) {
       if (err) throw err;
       res.json(result);
     });
