@@ -14,7 +14,7 @@ const setData = (state = initialState, action) => {
     const newState = {...state};
     switch(action.type) {
         case 'RETRIEVED_DATA':
-            const variableNames = [];
+            const variableNames = ['Please select a variable'];
                 for (let key in action.data[0]) {
                     if (key !== 'age') {
                         const variable: string = key.charAt(0).toUpperCase() + key.substr(1);
