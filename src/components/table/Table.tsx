@@ -5,8 +5,16 @@ import { connect } from 'react-redux';
 class Table extends React.Component<any> {
     render() {
         return (
-            <Dropdown />
-            // <table>
+            <section>
+            { !this.props.data &&
+                <div>
+                    <img src="src/assets/logo/birdie_logo_grey.svg" alt="Loading data"/>
+                    <h2>Loading data</h2>
+                </div>
+                }
+            {this.props.data &&
+              <Dropdown />
+            /* // <table>
             //     <thead>
             //         <tr>
             //             <th>#</th>
@@ -23,7 +31,11 @@ class Table extends React.Component<any> {
             //         </tr>
             //     </tbody>
 
-            // </table>
+            // </table> */
+            }
+          
+          
+            </section>
         )
     }
 }

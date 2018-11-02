@@ -36,16 +36,7 @@ class App extends React.Component<any> {
         return (
             
                 <main>
-                    { !this.props.data &&
-                    <div>
-                        <img src="src/assets/logo/birdie_logo_grey.svg" alt="Loading data"/>
-                        <h2>Loading data</h2>
-                    </div>
-                    }
-
-                    { this.props.data &&
                     <Table/>
-                    }
                 </main>
         )
     }
@@ -58,3 +49,5 @@ ReactDOM.render(
     </Provider>,
   document.getElementById("root")
 );
+
+store.dispatch({ type: 'GET_DEMOGRAPHIC_DATA' });
