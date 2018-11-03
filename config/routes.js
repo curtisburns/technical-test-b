@@ -1,6 +1,6 @@
 const express = require('express');
 const Router = express.Router();
-const db  = require('../model/db');
+const dataController = require('../controllers/dataController');
 
 Router.route('/')
   .get((req, res)=> {
@@ -8,11 +8,9 @@ Router.route('/')
   });
 
 Router.route('/data')
-  .get((req, res) => {
-    db.query('SELECT * FROM census_learn_sql', function (err, result) {
-      if (err) throw err;
-      res.json(result);
-    });
-  });
+  .get(dataController.gatherVariableNames);
+
+Router.route('/data/:variable')
+  .get(dataController.retrieveData);
 
 module.exports = Router;

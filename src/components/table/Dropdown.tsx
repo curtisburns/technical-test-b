@@ -5,7 +5,7 @@ class Dropdown extends React.Component<any, any> {
 
     handleChange= ({target: { value }}) => {
         console.log(value);
-        this.props.handleChange(value, this.props.data);
+        this.props.handleChange(value);
     }
 
     render() {
@@ -24,14 +24,16 @@ class Dropdown extends React.Component<any, any> {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleChange: (val, data) => dispatch({type: 'CHANGE_VARIABLE', variable: val, data: data})
+        handleChange: (val) => {
+            dispatch({type: 'RETRIEVE_DATA', variable: val});
+            dispatch({type: 'RETRIEVING_DATA', variable: val});
+        }
     }
 }
 
 const mapStateToProps = (state: any):any => {
     return {
-        variables: state.storedData.variableNames,
-        data: state.storedData.data
+        variables: state.initialFetch.variableNames,
     }
 }
 

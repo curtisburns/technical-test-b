@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
+
 // Styling
 import './scss/style.scss';
 
@@ -28,4 +29,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-store.dispatch({ type: 'GET_DEMOGRAPHIC_DATA' });
+store.dispatch({ type: 'GET_COLUMN_HEADERS' });

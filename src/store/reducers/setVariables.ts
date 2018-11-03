@@ -13,20 +13,14 @@ const initialState: IState = {
 const setData = (state = initialState, action) => {
     const newState = {...state};
     switch(action.type) {
-        case 'RETRIEVED_DATA':
-            const variableNames = ['Please select a variable'];
-                for (let key in action.data[0]) {
-                    if (key !== 'age') {
-                        const variable: string = key.charAt(0).toUpperCase() + key.substr(1);
-                          variableNames.push(variable);
-                    }
-                };
+        case 'RETRIEVED_COLUMN_HEADERS':
+            const variableNames = action.variableNames;
+            variableNames.unshift('Please select a variable');
             return  {
                 ...newState,
-                data: action.data,
                 variableNames
             }
-        case 'CANNOT_RETRIEVE_DATA':
+        case 'CANNOT_RETRIEVE_COLUMN_HEADERS':
             return {
                 ...newState,
                 error: action.err

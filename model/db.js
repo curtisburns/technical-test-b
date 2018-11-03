@@ -14,10 +14,6 @@ const con = mysql.createConnection(dbConfig);
 con.connect(function(err) {
   if (err) throw err;
   console.log('Now connected to birdietest database');
-  // con.query('SELECT * FROM census_learn_sql', function (err, result) {
-  //   if (err) throw err;
-  //   console.log(result);
-  // });
 });
 
 module.exports = con;

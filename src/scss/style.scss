@@ -41,9 +41,9 @@ body {
                 box-sizing: border-box;
     
                h2 {
-                font-weight: 200;
-                text-align: center;
-            }
+                    font-weight: 200;
+                    text-align: center;
+                }
             }
     
            
@@ -70,6 +70,10 @@ body {
                 padding-left: 12px;
                 background: $primary-input-color url('../assets/logo/white-arrow.png') 97% 45% no-repeat;
                 background-size: 20px;
+            }
+
+            option {
+                text-transform: uppercase;
             }
     
             select:hover {
@@ -101,10 +105,8 @@ body {
             th.variable {
                 width: 50%;
             }
-            th.count {
-                width: 20%;
-            }
-            th.average-age {
+
+            th.count, th.average-age  {
                 width: 20%;
             }
 
@@ -124,6 +126,21 @@ body {
               
             }
            
+        }
+
+        .non-displayed {
+            width: 100%;
+            color: $secondary-font-color;
+            background: #6c61c9;
+            box-sizing: border-box;
+            padding: 10px;
+            text-align: center;
+
+            h3 {
+                margin-block-start: 0;
+                margin-block-end: 0;
+                font-weight: 500;
+            }
         }
 
         .data-error-component {

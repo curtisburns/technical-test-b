@@ -8,19 +8,24 @@ import Preloader from './Preloader';
 
 
 class Table extends React.Component<any> {
+    
     render() {
+        const renderPreloader = this.props.retrievingData && !this.props.error;
+        const renderDataError = this.props.error;
+        const renderTable = this.props.variableNames
+
         return (
             <section className="table-component">
 
-            { !this.props.data && !this.props.error &&
+            { renderPreloader &&
                 <Preloader />
             }
 
-            {this.props.error &&
+            {renderDataError &&
                 <DataError />
             }
 
-            {this.props.data && !this.props.error &&
+            {renderTable  &&
                 <div>
                     <Dropdown />
                 
@@ -59,7 +64,9 @@ class Table extends React.Component<any> {
 
                     </table>
                     {this.props.omittedResults !== 0 && 
-                        <h3>There is a further total of {this.props.omittedResults} non-displayed lines.</h3>
+                        <div className="non-displayed">
+                            <h3>There is a further total of {this.props.omittedResults} non-displayed lines.</h3>
+                        </div>
                     }
                 </div>
 
@@ -70,18 +77,18 @@ class Table extends React.Component<any> {
     }
 }
 
-// This can be put into the select variable dropdown menu.
-
 
 //Whenever the state changes, we need to be able to subscribe it. This is achieved doing the below.
 
 const mapStateToProps = (state) => {
     return {
-        data: state.storedData.data,
-        error: state.storedData.error,
-        selectedVariable: state.manipulatedData.selectedVariable,
-        results: state.manipulatedData.results,
-        omittedResults: state.manipulatedData.omittedResults
+        variableNames: state.initialFetch.variableNames,
+        data: state.fetchedData.data,
+        error: state.initialFetch.error || state.fetchedData.error,
+        selectedVariable: state.fetchedData.selectedVariable,
+        results: state.fetchedData.results,
+        omittedResults: state.fetchedData.omittedResults,
+        retrievingData: state.fetchedData.retrievingData
     }
 }
 

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import setData from './setData';
+import setVariables from './setVariables';
 import handleData from './handleData';
 
 const rootReducer = combineReducers({
-    storedData: setData,
-    manipulatedData: handleData
+    initialFetch: setVariables,
+    fetchedData: handleData
 });
 
 export default rootReducer;
