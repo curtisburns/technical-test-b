@@ -42,9 +42,7 @@ for (let i = 0; i < correctVariables.length; i++) {
             expect(res.body).to.be.an('array');
         })
         done();
-    })
-    
-      
+    })    
       
     it(`should be an array of objects that have the properties of age and the selected variable - Variable ${i+1}`, done => {
         api.get(`/api/data/${correctVariables[i]}`)

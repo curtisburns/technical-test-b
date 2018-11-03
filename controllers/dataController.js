@@ -6,8 +6,8 @@ function gatherVariableNames(req, res) {
             res.status(500).send(err)
         } else {
             res.json(result);
-    }
-})
+        }
+    })
 }
 
 function retrieveData(req, res) {
