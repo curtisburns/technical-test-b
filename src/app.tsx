@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 
 // Styling
-// import './scss/style.scss';
+import './scss/style.scss';
 
 // Components
 import Table from './components/table/Table';

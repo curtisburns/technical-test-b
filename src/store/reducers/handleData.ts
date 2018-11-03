@@ -1,7 +1,8 @@
 const initialState = {
+    data: {},
     results: [],
     selectedVariable: 'N/A',
-    data: {}
+    omittedResults: 0
 };
 
 const handleData = (state = initialState, action) => {
@@ -28,6 +29,7 @@ const handleData = (state = initialState, action) => {
     
                 // Prepares data in array format to be printed in Table component - needs to be sorted!
                 let resultsArray = [];
+                let omittedResults = 0;
                 for (let key in variableObj) {
     
                     let dataObj = {};
@@ -44,14 +46,19 @@ const handleData = (state = initialState, action) => {
                     
                     resultsArray.push(dataObj);
                 }
+
+                // Declare results omitted from query
+                if (resultsArray.length > 100) {
+                    omittedResults = resultsArray.length - 100;
+                }
     
                 // Sort data by count and limit to 100 results
                 resultsArray = resultsArray.sort(function(a, b){return b.count - a.count}).slice(0, 100);
                 return {
                     ...newState,
                     selectedVariable: action.variable,
-                    results: resultsArray
-                
+                    results: resultsArray,
+                    omittedResults: omittedResults
                 } 
             } else {
                 return  {

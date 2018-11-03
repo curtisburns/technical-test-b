@@ -1,31 +1,36 @@
 import * as React from 'react';
-import Dropdown from './Dropdown';
 import { connect } from 'react-redux';
+
+//Components
+import Dropdown from './Dropdown';
+import DataError from './DataError';
+import Preloader from './Preloader';
+
 
 class Table extends React.Component<any> {
     render() {
         return (
-            <section>
+            <section className="table-component">
 
-            { !this.props.data &&
-                <div>
-                    <img src="src/assets/logo/birdie_logo_grey.svg" alt="Loading data"/>
-                    <h2>Loading data</h2>
-                </div>
+            { !this.props.data && !this.props.error &&
+                <Preloader />
             }
 
-            {this.props.data &&
+            {this.props.error &&
+                <DataError />
+            }
+
+            {this.props.data && !this.props.error &&
                 <div>
-                    <p>Data has loaded</p>
                     <Dropdown />
                 
                     <table>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>{this.props.selectedVariable}</th>
-                                <th>Count</th>
-                                <th>Average age</th>
+                                <th className="rank">#</th>
+                                <th className="variable">{this.props.selectedVariable}</th>
+                                <th className="count">Count</th>
+                                <th className="average-age"> Average age</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +58,9 @@ class Table extends React.Component<any> {
                         </tbody>
 
                     </table>
+                    {this.props.omittedResults !== 0 && 
+                        <h3>There is a further total of {this.props.omittedResults} non-displayed lines.</h3>
+                    }
                 </div>
 
             }
@@ -62,25 +70,18 @@ class Table extends React.Component<any> {
     }
 }
 
-
-//   This is used to map our action to props
-//  const mapDispatchToProps = (dispatch) => {
-//      return {
-//          insertFunction: () => dispatch({type: 'SELECT_VARIABLE'})
-//      }
-//  }
-
 // This can be put into the select variable dropdown menu.
 
 
 //Whenever the state changes, we need to be able to subscribe it. This is achieved doing the below.
-//Same as mapStoreToProps = (store) 
 
 const mapStateToProps = (state) => {
     return {
         data: state.storedData.data,
+        error: state.storedData.error,
         selectedVariable: state.manipulatedData.selectedVariable,
-        results: state.manipulatedData.results
+        results: state.manipulatedData.results,
+        omittedResults: state.manipulatedData.omittedResults
     }
 }
 

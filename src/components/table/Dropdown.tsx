@@ -10,11 +10,14 @@ class Dropdown extends React.Component<any, any> {
 
     render() {
         return (
-            <select onChange={this.handleChange}>
-                {this.props.variables.map((variable, index) =>
-                     <option key={index} value={variable}>{variable}</option>
-                )}
-            </select>
+            <div className="dropdown-component">
+                <h4>Variable</h4>
+                <select onChange={this.handleChange}>
+                    {this.props.variables.map((variable, index) =>
+                        <option key={index} value={variable}>{variable}</option>
+                    )}
+                </select>
+            </div>
         )
     }
 }
