@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 class Dropdown extends React.Component<any, any> {
 
     handleChange= ({target: { value }}) => {
-        console.log(value);
         this.props.handleChange(value);
     }
 

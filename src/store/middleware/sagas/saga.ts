@@ -1,4 +1,3 @@
-//Like a setTimout function
 import axios from 'axios';
 
 //Helper functions - put is like dispatch
