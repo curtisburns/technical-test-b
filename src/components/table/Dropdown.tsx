@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-class Dropdown extends React.Component<any, any> {
+interface IProps {
+    variables?: string[];
+    handleChange?: any
+}
+
+class Dropdown extends React.Component<IProps> {
 
     handleChange= ({target: { value }}) => {
         this.props.handleChange(value);

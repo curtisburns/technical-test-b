@@ -17,7 +17,8 @@ const initialFetch = store => next => action => {
               return column.Field.charAt(0).toUpperCase() + column.Field.substr(1)
             }).filter(field => field !== 'Age').sort();
 
-            console.log('initialFetch middleware - variables', variableNames);
+            // console.log('initialFetch middleware - variables', variableNames);
+
             /*
             Once data is received, dispatch an action telling the application
             that data was received successfully, along with the data
@@ -31,7 +32,8 @@ const initialFetch = store => next => action => {
           /*
           in case there is any error, dispatch an action containing the error
           */
-         console.log('initialFetch middleware - err', err);
+         
+        //  console.log('initialFetch middleware - err', err);
 
           return next({
             type: 'CANNOT_RETRIEVE_COLUMN_HEADERS',

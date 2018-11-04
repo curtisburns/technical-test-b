@@ -7,12 +7,29 @@ import DataError from './DataError';
 import Preloader from './Preloader';
 
 
-class Table extends React.Component<any> {
+
+
+interface IResults {
+    value?: string;
+    count?: number;
+    averageAge?: number;
+}
+
+interface IProps {
+    variables: string[]
+    error?: any
+    selectedVariable: string;
+    results: IResults[];
+    omittedResults: number;
+    retrievingData: boolean;
+}
+
+class Table extends React.Component<IProps> {
     
     render() {
         const renderPreloader = this.props.retrievingData && !this.props.error;
         const renderDataError = this.props.error;
-        const renderTable = this.props.variableNames
+        const renderTable = this.props.variables
 
         return (
             <section className="table-component">
@@ -82,8 +99,7 @@ class Table extends React.Component<any> {
 
 const mapStateToProps = (state) => {
     return {
-        variableNames: state.initialFetch.variableNames,
-        data: state.fetchedData.data,
+        variables: state.initialFetch.variableNames,
         error: state.initialFetch.error || state.fetchedData.error,
         selectedVariable: state.fetchedData.selectedVariable,
         results: state.fetchedData.results,

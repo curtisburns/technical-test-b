@@ -1,11 +1,9 @@
 interface IState {
-    data: any;
     variableNames?: string[];
     error?: string
 }
 
 const initialState: IState = {
-    data: '',
     variableNames: [],
 };
 

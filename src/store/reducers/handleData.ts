@@ -1,5 +1,18 @@
-const initialState = {
-    data: {},
+interface IState {
+    results: IResults[];
+    selectedVariable: string;
+    omittedResults: number;
+    retrievingData: boolean;
+    error?: any;
+}
+
+interface IResults {
+    value?: string;
+    count?: number;
+    averageAge?: number;
+}
+
+const initialState: IState = {
     results: [],
     selectedVariable: 'N/A',
     omittedResults: 0,
@@ -34,12 +47,11 @@ const handleData = (state = initialState, action) => {
                 ...newState,
                 selectedVariable: 'N/A',
                 results: [],
-                omittedResults: 0
+                omittedResults: 0,
+                error: ''
             }
         }
         case 'RETRIEVE_DATA_ASYNC':
-        console.log('woooooo');
-        
             if ( action.variable !== 'Please select a variable') {
                 const variable = action.variable.toLowerCase();
                 
@@ -72,9 +84,8 @@ const handleData = (state = initialState, action) => {
 
                     valueObj['value'] = value;
                     valueObj['count'] = valuesObj[value].count;
-                    valueObj['averageAge'] = averageAge.toFixed(1);
-
-                    
+                    valueObj['averageAge'] = parseFloat(averageAge.toFixed(1));
+  
                     resultsArray.push(valueObj);
                 }
 
@@ -87,7 +98,6 @@ const handleData = (state = initialState, action) => {
 
                 // Sort data by count and limit to 100 results
                 resultsArray = resultsArray.sort(function(a, b){return b.count - a.count}).slice(0, 100);
-                console.log(resultsArray);
                 
                 return {
                     ...newState,
@@ -101,7 +111,8 @@ const handleData = (state = initialState, action) => {
                     ...newState,
                     selectedVariable: 'N/A',
                     results: [],
-                    omittedResults: 0
+                    omittedResults: 0,
+                    error: ''
                 }
             }
         default: return newState;
