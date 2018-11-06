@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 const Router = require('./config/routes');
+
+
+app.use(express.static(`${__dirname}/public`));
+
 
 app.use('/api', Router);
 

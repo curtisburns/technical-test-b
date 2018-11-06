@@ -6,7 +6,7 @@
   "scripts": {
     "start:client": "webpack-dev-server --content-base ./src/dist",
     "start:server": "nodemon",
-    "build": "webpack",
+    "build": "webpack -p",
     "test": "nyc mocha test/**/*_spec.js --require test/spec_helper --recursive --exit",
     "start": "npm run build && node index"
   },
