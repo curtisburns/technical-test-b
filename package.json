@@ -10,9 +10,6 @@
     "test": "nyc mocha test/**/*_spec.js --require test/spec_helper --recursive --exit",
     "start": "npm run build && node index"
   },
-  "engines": {
-    "node": "9.10.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/curtisburns/technical-test-b.git"
