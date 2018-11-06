@@ -1,4 +1,12 @@
 var path = require("path");
+const webpack = require('webpack');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpack = new HtmlWebpackPlugin({
+  template: 'src/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
 
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -6,14 +14,16 @@ const CopyWebpack = new CopyWebpackPlugin([
   { from: './src/assets', to: 'assets' }
 ]);
 
+const HotModuleReplcement = new webpack.HotModuleReplacementPlugin();
+
 var config = {
   mode: 'development',
-  entry: ["./src/app.tsx"],
+  entry: './src/app.tsx',
   output: {
-    filename: "bundle.js",
-    publicPath: "/src/",
-    path: path.join(__dirname, "src/dist/build/")
-},
+    path: path.resolve('public'),
+    filename: 'app.js',
+    publicPath: '/'
+  },
   watch: true,
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
@@ -55,7 +65,7 @@ var config = {
       }
     }
   },
-  plugins: [CopyWebpack]
+  plugins: [HotModuleReplcement, HtmlWebpack, CopyWebpack]
 };
 
 module.exports = config;
