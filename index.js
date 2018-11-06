@@ -9,6 +9,9 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use('/api', Router);
 
-app.listen(port, "0.0.0.0", () => console.log('Express is listening on port ' + port));
+
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+
+app.listen(port, () => console.log('Express is listening on port ' + port));
 
 module.exports = app; // This is so I can require it in my tests.
