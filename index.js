@@ -4,7 +4,7 @@ const port = process.env.PORT || 4000;
 const Router = require('./config/routes');
 
 
-app.use(express.static(`src/assets`));
+app.use(express.static(`${__dirname}/src/dist`));
 
 
 app.use('/api', Router);
