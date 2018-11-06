@@ -5,6 +5,6 @@ const Router = require('./config/routes');
 
 app.use('/api', Router);
 
-app.listen(port, () => console.log('Express is listening on port ' + port));
+app.listen(port, "0.0.0.0", () => console.log('Express is listening on port ' + port));
 
 module.exports = app; // This is so I can require it in my tests.
